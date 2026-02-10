@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISI Contracting Group LLC - Oil Field Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a0a0a;
+            --secondary-color: #2a2a2a;
+            --accent-color: #ff6b00;
+            --steel-gray: #6b7280;
+            --steel-light: #9ca3af;
+            --steel-dark: #374151;
+            --metal-shine: #d1d5db;
+            --oil-black: #1a1a1a;
+            --text-light: #ffffff;
+            --text-dark: #e0e0e0;
+            --bg-dark: #151515;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--primary-color);
+        }
+
+        /* Header Styles */
+        header {
+            background: #1a1a1a;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+            border-bottom: 3px solid #ff6b00;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--metal-shine);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 
+                1px 1px 0 var(--steel-dark),
+                2px 2px 0 rgba(0,0,0,0.5),
+                0 0 10px rgba(255,255,255,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(42,42,42,0.95) 0%, 
+                    rgba(55,65,81,0.95) 25%, 
+                    rgba(42,42,42,0.95) 50%, 
+                    rgba(55,65,81,0.95) 75%, 
+                    rgba(42,42,42,0.95) 100%);
+            background-size: 200% 200%;
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), inset 0 -2px 4px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            background: linear-gradient(145deg, var(--steel-dark), var(--secondary-color));
+            border: 3px solid var(--steel-gray);
+            box-shadow: 
+                inset 0 2px 4px rgba(255,255,255,0.1),
+                inset 0 -2px 4px rgba(0,0,0,0.3),
+                0 0 20px rgba(255,107,0,0.2);
+            position: relative;
+        }
+
+        .hero-logo::before,
+        .hero-logo::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, var(--steel-light) 40%, var(--steel-dark) 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.5), inset 0 -1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero-logo::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .hero-logo::after {
+            top: 10px;
+            right: 10px;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--metal-shine);
+            text-shadow: 
+                1px 1px 0 var(--steel-dark),
+                2px 2px 0 rgba(0,0,0,0.5),
+                3px 3px 0 rgba(0,0,0,0.3),
+                0 0 20px rgba(255,255,255,0.2);
+        }
+
+        .hero-tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+            border: 2px solid var(--accent-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--steel-dark) 0%, var(--secondary-color) 50%, var(--steel-dark) 100%);
+            border-bottom: 4px solid var(--accent-color);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 3px,
+                rgba(255,255,255,0.02) 3px,
+                rgba(255,255,255,0.02) 6px
+            );
+            pointer-events: none;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--metal-shine);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0 var(--primary-color),
+                2px 2px 0 rgba(0,0,0,0.5),
+                0 0 15px rgba(255,255,255,0.15);
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 40px 40px, rgba(107,114,128,0.15) 3px, transparent 3px),
+                radial-gradient(circle at 120px 40px, rgba(107,114,128,0.15) 3px, transparent 3px),
+                radial-gradient(circle at 40px 120px, rgba(107,114,128,0.15) 3px, transparent 3px),
+                radial-gradient(circle at 120px 120px, rgba(107,114,128,0.15) 3px, transparent 3px);
+            background-size: 160px 160px;
+            pointer-events: none;
+        }
+
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .services h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--metal-shine);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0 var(--primary-color),
+                2px 2px 0 rgba(0,0,0,0.5),
+                0 0 15px rgba(255,255,255,0.15);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, var(--steel-dark), var(--secondary-color));
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.5),
+                inset 0 1px 2px rgba(255,255,255,0.1),
+                inset 0 -1px 2px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            border-left: 5px solid var(--accent-color);
+            border-top: 1px solid var(--steel-gray);
+            position: relative;
+        }
+
+        .service-card::before,
+        .service-card::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, var(--steel-light) 40%, var(--steel-dark) 100%);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 1px 2px rgba(255,255,255,0.5), 
+                inset 0 -1px 2px rgba(0,0,0,0.5);
+        }
+
+        .service-card::before {
+            top: 15px;
+            right: 15px;
+        }
+
+        .service-card::after {
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 30px rgba(255, 107, 0, 0.3),
+                inset 0 1px 2px rgba(255,255,255,0.15),
+                inset 0 -1px 2px rgba(0,0,0,0.3);
+            border-left-color: #ff8533;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--metal-shine);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 5rem 2rem;
+            background: var(--oil-black);
+            color: var(--text-light);
+            border-top: 4px solid var(--accent-color);
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .why-choose-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--steel-dark), var(--secondary-color));
+            border: 2px solid var(--steel-gray);
+            transition: all 0.3s;
+            box-shadow: 
+                inset 0 1px 2px rgba(255,255,255,0.1),
+                inset 0 -1px 2px rgba(0,0,0,0.3),
+                0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .feature::before,
+        .feature::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, var(--steel-light) 40%, var(--steel-dark) 100%);
+            border-radius: 50%;
+            box-shadow: 
+                inset 0 1px 1px rgba(255,255,255,0.5), 
+                inset 0 -1px 1px rgba(0,0,0,0.5);
+        }
+
+        .feature::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .feature::after {
+            top: 10px;
+            right: 10px;
+        }
+
+        .feature:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 
+                inset 0 1px 2px rgba(255,255,255,0.15),
+                inset 0 -1px 2px rgba(0,0,0,0.3),
+                0 6px 25px rgba(255,107,0,0.3);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .feature p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--steel-dark) 0%, var(--secondary-color) 50%, var(--steel-dark) 100%);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: var(--metal-shine);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0 var(--primary-color),
+                2px 2px 0 rgba(0,0,0,0.5),
+                0 0 15px rgba(255,255,255,0.15);
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 5rem 2rem;
+            background: var(--bg-dark);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .contact-form-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--metal-shine);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0 var(--primary-color),
+                2px 2px 0 rgba(0,0,0,0.5),
+                0 0 15px rgba(255,255,255,0.15);
+        }
+
+        .contact-form-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            background: linear-gradient(145deg, var(--steel-dark), var(--secondary-color));
+            padding: 2.5rem;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.5),
+                inset 0 1px 2px rgba(255,255,255,0.1),
+                inset 0 -1px 2px rgba(0,0,0,0.3);
+            border-left: 5px solid var(--accent-color);
+            border-top: 1px solid var(--steel-gray);
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--metal-shine);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 2px solid var(--steel-gray);
+            background: var(--oil-black);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: 2px solid var(--accent-color);
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: transparent;
+            color: var(--accent-color);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--steel-dark) 0%, var(--oil-black) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30px 20px, rgba(107,114,128,0.2) 2px, transparent 2px),
+                radial-gradient(circle at 90px 20px, rgba(107,114,128,0.2) 2px, transparent 2px);
+            background-size: 120px 40px;
+            pointer-events: none;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer em {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .services h2,
+            .about h2,
+            .contact h2,
+            .why-choose h2 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ISI CONTRACTING</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="https://i.ibb.co/SwyR56Hd/ISI.png" alt="ISI Contracting Group LLC Logo">
+            </div>
+            <h1>ISI Contracting Group LLC</h1>
+            <p class="hero-tagline">"As Iron Sharpens Iron, so one person sharpens another! Stronger Together!"</p>
+            <p class="hero-subtitle">Complete Pipeline Facility Construction & Maintenance Services</p>
+            <p>Locally Owned and Operated One-Stop-Shop for all your Oil Field Service needs. Our highly experienced and skilled crews provide clients with complete pipeline facility construction and maintenance services.</p>
+            <a href="#contact-form" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About ISI Contracting Group</h2>
+            <p>ISI Contracting Group LLC is your trusted partner in the Oil and Gas Industry. As a locally owned and operated company, we pride ourselves on delivering comprehensive solutions with unmatched expertise. Our highly experienced and skilled crews are committed to excellence in every project, providing complete pipeline facility construction and maintenance services that meet the highest industry standards.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-content">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Wellsite Services</h3>
+                    <p>Comprehensive wellsite support and maintenance solutions</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Utility Infrastructure</h3>
+                    <p>Expert utility infrastructure development and management</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Facility Construction</h3>
+                    <p>Complete industrial facility construction and maintenance</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Certified Welders</h3>
+                    <p>Professional welding services with certified technicians</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Energy Services</h3>
+                    <p>Full-spectrum energy solutions for oil and gas operations</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Trucking Support</h3>
+                    <p>Reliable transportation and logistics services</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Project Management</h3>
+                    <p>Expert oversight ensuring on-time, on-budget delivery</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Gas Compressor Station Maintenance</h3>
+                    <p>Specialized maintenance for gas compressor stations</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Oil & Gas Services</h3>
+                    <p>Complete support for oil and gas operations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose">
+        <div class="why-choose-content">
+            <h2>Why Choose ISI Contracting Group?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Highly Experienced</h3>
+                    <p>Our team brings years of industry expertise to every project</p>
+                </div>
+                <div class="feature">
+                    <h3>Locally Owned</h3>
+                    <p>Community-focused service with personal attention to detail</p>
+                </div>
+                <div class="feature">
+                    <h3>One-Stop-Shop</h3>
+                    <p>Complete solutions for all your oil field service needs</p>
+                </div>
+                <div class="feature">
+                    <h3>Quality Assurance</h3>
+                    <p>Certified professionals committed to excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your oil field service needs. Our team is ready to provide you with the expertise and support you deserve.</p>
+            <a href="#contact-form" class="cta-button">Contact Us</a>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365f585059765f455f55595842445755425f58511855595b">[email&#160;protected]</a></span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Locally Owned & Operated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-form-section">
+        <div class="contact-form-content">
+            <h2>Get In Touch</h2>
+            <p>Fill out the form below and our team will get back to you shortly.</p>
+            <form action="https://formsubmit.co/devanrutan@gmail.com" method="POST" class="contact-form">
+                <!-- Email subject -->
+                <input type="hidden" name="_subject" value="ISI Contracting - Contact Form Submitted">
+                <label>
+                    Name *
+                    <input type="text" name="name" required>
+                </label>
+                <label>
+                    Email *
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    Message *
+                    <textarea name="message" required></textarea>
+                </label>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ISI Contracting Group LLC. All rights reserved.</p>
+        <p><em>"As Iron Sharpens Iron, so one person sharpens another! Stronger Together!"</em></p>
+    </footer>
+</body>
+</html>
