@@ -84,6 +84,17 @@
             color: var(--accent-color);
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Hero Section */
         .hero {
             margin-top: 70px;
@@ -410,8 +421,10 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .feature {
@@ -658,6 +671,41 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                padding-top: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.8rem 0;
+                border-top: 1px solid var(--steel-gray);
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -683,20 +731,6 @@
             .hero-logo::after {
                 width: 8px;
                 height: 8px;
-            }
-
-            .nav-links {
-                gap: 0.8rem;
-                font-size: 0.85rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                letter-spacing: 1px;
-            }
-
-            nav {
-                padding: 0 1rem;
             }
 
             .services h2,
@@ -775,6 +809,15 @@
         }
 
         @media (max-width: 480px) {
+            .logo {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+
+            .mobile-menu-toggle {
+                font-size: 1.3rem;
+            }
+
             .hero h1 {
                 font-size: 1.5rem;
             }
@@ -793,15 +836,6 @@
 
             .hero-logo {
                 max-width: 250px;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-                font-size: 0.75rem;
-            }
-
-            .logo {
-                font-size: 1rem;
             }
 
             .services h2,
@@ -835,15 +869,15 @@
             header {
                 padding: 1rem 0;
             }
-        }
-    </style>
+        }    </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav>
             <div class="logo">ISI CONTRACTING</div>
-            <ul class="nav-links">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -960,10 +994,6 @@
             <a href="#contact-form" class="cta-button">Contact Us</a>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span>📧</span>
-                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365f585059765f455f55595842445755425f58511855595b">[email&#160;protected]</a></span>
-                </div>
-                <div class="contact-item">
                     <span>📍</span>
                     <span>Locally Owned & Operated</span>
                 </div>
@@ -1001,5 +1031,20 @@
         <p>&copy; 2026 ISI Contracting Group LLC. All rights reserved.</p>
         <p><em>"As Iron Sharpens Iron, so one person sharpens another! Stronger Together!"</em></p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
