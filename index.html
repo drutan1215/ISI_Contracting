@@ -263,7 +263,18 @@
         .section-watermark {
             font-family:'Bebas Neue',sans-serif;
             font-size:clamp(5rem,14vw,11rem); letter-spacing:.05em;
-            color:rgba(255,255,255,.07); position:absolute;
+            color:transparent;
+            background:linear-gradient(
+                180deg,
+                rgba(255,255,255,.18) 0%,
+                rgba(200,200,200,.12) 30%,
+                rgba(255,255,255,.22) 50%,
+                rgba(150,150,150,.08) 70%,
+                rgba(255,255,255,.14) 100%
+            );
+            -webkit-background-clip:text;
+            background-clip:text;
+            position:absolute;
             top:0; left:50%; transform:translateX(-50%);
             white-space:nowrap; pointer-events:none; user-select:none;
             line-height:1;
